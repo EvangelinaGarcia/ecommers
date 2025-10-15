@@ -108,14 +108,23 @@ public class Main {
 
     // TODO: validar que encontramos el indice
     String nombreOriginal = producto.nombre;
+    double precioOriginal = producto.precioP;
+
+
     System.out.println("Producto a editar:");
     System.out.println(nombreOriginal);
     // TODO: validar que el usuario quiere editar el producto que se encontro
     System.out.print("Ingrese el nuevo nombre: ");
     String nuevoNombre = entrada.nextLine();
+    System.out.println(precioOriginal);
+    // TODO: validar que el usuario quiere editar el producto que se encontro
+    System.out.print("Ingrese el nuevo precio: ");
+    double nuevoPrecio = entrada.nextDouble();
+
 
 
     producto.nombre = nuevoNombre;
+    producto.precioP = nuevoPrecio;
 
     System.out.printf("El nombre del producto cambio de %s a %s", nombreOriginal, nuevoNombre);
   }
