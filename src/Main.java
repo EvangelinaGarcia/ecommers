@@ -48,26 +48,37 @@ public class Main {
     Scanner entrada = new Scanner(System.in);
     System.out.println("Creando Nuevo Producto");
     System.out.print("Ingrese el nombre del nuevo producto: ");
-    String nombre = entrada.nextLine();
 
-    productos.add(new Producto(id, nombre));
+    String nombre = entrada.nextLine();
+    System.out.print("Precio: ");
+    double precioP = entrada.nextDouble();
+    System.out.print("Stock inicial: ");
+    int cantP = entrada.nextInt();
+
+    productos.add(new Producto(id, nombre, precioP, cantP));
     System.out.print("El articulo ingresado es "+ nombre );
+    System.out.print("El precio es:  "+ precioP );
+    System.out.print("Cantidad incial ingresada: "+ cantP );
 
     //
     pausa();
   }
 
   public static void listarProductos(ArrayList<Producto> productos) {
-    System.out.println("=======================================");
-    System.out.println("        LISTA DE PRODUCTOS");
-    System.out.println("=======================================");
+    System.out.println("=======================================================================================================");
+    System.out.println("                                          LISTA DE PRODUCTOS                                           ");
+    System.out.println("=======================================================================================================");
+    System.out.println("=======================================================================================================");
+    // Encabezado
+    System.out.printf("%-5s | %-70s | %-12s | %-8s%n", "ID", "Nombre", "Precio", "Cant.");
+    System.out.println("-----------------------------------------------------------------------------------------------");
 
     if (productos == null || productos.isEmpty()) {
       System.out.println("⚠️  No hay productos para mostrar.");
     } else {
       int contador = 1;
-      for (Producto producto : productos) {
-        System.out.printf(" %2d. %s%n", producto.id, producto.nombre);
+     for (Producto producto : productos) {
+        System.out.printf("%-5d | %-70s | %-12.2f | %-8d%n", producto.id, producto.nombre , producto.precioP, producto.cantP);
       }
     }
 
@@ -116,7 +127,7 @@ public class Main {
 
     // TODO: validar que encontramos el indice
     String nombreOriginal = producto.nombre;
-    System.out.println("Producto a eliminar:");
+    System.out.println("Producto ELIMINADO:");
     System.out.println(nombreOriginal);
     // TODO: validar que el usuario quiere borrar el producto que se encontro
 
@@ -165,17 +176,17 @@ public class Main {
   public static ArrayList<Producto> obtenerProductosDecoracion() {
     ArrayList<Producto> productos = new ArrayList<>();
 
-    productos.add(new Producto(1,"Mesa TV+ Escritorio con tapa en madera clara"));
-    productos.add(new Producto(2,"Comoda Vajillero modelo Pampa"));
-    productos.add(new Producto(3,"Panel flotante de TV revistido en madera"));
-    productos.add(new Producto(4,"Biblioteca Modelo kenia de melamina 18MM"));
-    productos.add(new Producto(5,"Placard Nordico MODELO MONACO Escandinavo Paraiso Laqueado Puertas Melamina blanca"));
-    productos.add(new Producto(6,"Biblioteca Paraiso Laqueado y Melamina Modelo Montevideo"));
-    productos.add(new Producto(7,"lampara de pie, negra articulada"));
-    productos.add(new Producto(8,"juego de mesa con 4 sillas estilo Nordico"));
-    productos.add(new Producto(9,"sillon 2 cuerpos gamuza "));
-    productos.add(new Producto(10,"ALACENA superior JUANA puertas revatibles"));
-    productos.add(new Producto(11,"Cama Rusticda de cedro moderna matrimonial"));
+    productos.add(new Producto(1,"Mesa TV+ Escritorio con tapa en madera clara",25000.40,50));
+    productos.add(new Producto(2,"Comoda Vajillero modelo Pampa",150000,15));
+    productos.add(new Producto(3,"Panel flotante de TV revistido en madera",80000,25));
+    productos.add(new Producto(4,"Biblioteca Modelo kenia de melamina 18MM",250000,10));
+    productos.add(new Producto(5,"Placard Nordico MODELO MONACO Escandinavo ",350000,17));
+    productos.add(new Producto(6,"Biblioteca Paraiso Laqueado y Melamina Modelo Montevideo",290000,7));
+    productos.add(new Producto(7,"lampara de pie, negra articulada",55000,75));
+    productos.add(new Producto(8,"juego de mesa con 4 sillas estilo Nordico",135000,9));
+    productos.add(new Producto(9,"sillon 2 cuerpos gamuza ",450000,5));
+    productos.add(new Producto(10,"ALACENA superior JUANA puertas revatibles",147000,10));
+    productos.add(new Producto(11,"Cama Rusticda de cedro moderna matrimonial",360000,25));
 
     return productos;
   }
