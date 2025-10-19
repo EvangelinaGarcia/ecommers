@@ -10,11 +10,14 @@ public class Main {
     int idSiguiente = productosDB.size() + 1;
     int opcionUsuario;
 
+//indice de acciones que el usuario puede elegir
     System.out.println("Bienvenidos a la app de compras 🛒");
+    System.out.println(" ");
     label:
     while (true) {
       System.out.println("""
           Eliga la opción deseada ingresando el número:
+          
           0 - Finaliza el programa
           1 - Crea un Producto
           2 - Listar Productos
@@ -34,9 +37,10 @@ public class Main {
         case 3 -> buscarProductoPorNombre(productosDB);
         case 4 -> editarProducto(productosDB);
         case 5 -> borrarProducto(productosDB);
-        case 6 -> System.out.println("Funcionalida en progreso...");
+        case 6 -> System.out.println("Crear pedido Función en proceso...");
+        case 7 -> System.out.println("Listar pedidos Función en proceso...");
         case 0 -> {
-          System.out.println("Gracias por usar la app!");
+          System.out.println("Gracias por utilizar nuestro e-commerce!");
           break label; // corta el bucle donde se ejecuta
         }
         default -> System.out.println("Opción incorrecta, intente de nuevo");
@@ -50,17 +54,18 @@ public class Main {
     System.out.print("Ingrese el nombre del nuevo producto: ");
 
     String nombre = entrada.nextLine();
+
     System.out.print("Precio: ");
     double precioP = entrada.nextDouble();
     System.out.print("Stock inicial: ");
     int cantP = entrada.nextInt();
 
     productos.add(new Producto(id, nombre, precioP, cantP));
-    System.out.print("El articulo ingresado es "+ nombre );
-    System.out.print("El precio es:  "+ precioP );
-    System.out.print("Cantidad incial ingresada: "+ cantP );
+    System.out.println("El articulo ingresado es "+ nombre + " " );
+    System.out.println("El precio es:  "+ precioP+ " " );
+    System.out.println("Cantidad incial ingresada: "+ cantP + " " );
 
-    //
+    System.out.println("=======================================");
     pausa();
   }
 
@@ -88,7 +93,7 @@ public class Main {
 
   public static void buscarProductoPorNombre(ArrayList<Producto> productos) {
     Scanner entrada = new Scanner(System.in);
-    System.out.println("Ingrese un nombre de un producto: ");
+    System.out.print("Ingrese un nombre de un producto: ");
     String busqueda = entrada.nextLine();
     ArrayList<Producto> productoEncontrados = new ArrayList<>();
 
@@ -106,7 +111,7 @@ public class Main {
     Scanner entrada = new Scanner(System.in);
     Producto producto = obtenerProductoPorId(productos);
 
-    // TODO: validar que encontramos el indice
+
     String nombreOriginal = producto.nombre;
     double precioOriginal = producto.precioP;
 
@@ -176,10 +181,8 @@ public class Main {
     Scanner entrada = new Scanner(System.in);
     System.out.println("Pulse ENTER para continuar...");
     entrada.nextLine();
-    for (int i = 0; i < 20; ++i) {
-      System.out.println();
-    }
-    // TODO: limpiar la pantalla de la consola
+
+
   }
 
   public static ArrayList<Producto> obtenerProductosDecoracion() {
