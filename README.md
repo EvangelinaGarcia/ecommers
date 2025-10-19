@@ -1,4 +1,4 @@
-# 🛒 Sistema de Gestión de Productos en Java
+# 🛒 Sistema de Gestión de ecomerce en Java
 
 > Aplicación de consola desarrollada en **Java** para la gestión de productos de decoración.  
 > Ahora con soporte para **precio** 💰 y **cantidad (stock)** 📦.
