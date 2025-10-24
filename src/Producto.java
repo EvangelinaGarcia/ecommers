@@ -1,15 +1,80 @@
 public class Producto {
 
-  int id;
-  String nombre;
-  double precioP;
-  int cantP;
+  private static  int nextId = 1;
 
-  // metodo constructor
-  public Producto(int idProducto, String nombreProducto, double precioProducto,int cantidadStock) {
-    id = idProducto;
-    nombre = nombreProducto;
-    precioP = precioProducto;
-    cantP = cantidadStock;
+  private  int id;
+  private String nombre;
+  private double precio;
+  private int cant;
+  private String descripcion;
+  private String categoria;
+
+  public Producto(String nombre, double precio,int cant,String descripcion, String categoria) {
+    this.id = Producto.nextId;
+
+    Producto.nextId++;
+    this.nombre = nombre;
+    this.precio = precio;
+    this.cant = cant;
+    this.descripcion = descripcion;
+    this.categoria = categoria;
+  }
+ // getter & setter
+
+
+  public int getId() {
+    return this.id;
+  }
+
+  public String getNombre() {
+    return this.nombre;
+  }
+  public void setNombre(String nombre) {
+    this.nombre = nombre;
+  }
+  
+  public double getPrecio() {
+    return precio;
+  }
+  public void setPrecio(double precio) {
+    if (precio <= 0) {
+      System.out.println("El precio debe ser mayor a cero, no se modifico nada");
+      return;
+    }
+    this.precio = precio;
+  }
+
+  public int getCant() {
+    return cant;
+  }
+
+  //setter
+    public void setCant(int cant) {
+    this.cant = cant;
+  }
+
+public String getDescripcion() {
+  return descripcion;
+}
+
+  public void setDescripcion(String descripcion) {
+    if (descripcion.length() > 500) {
+      System.out.println("El limite de caracteres es 500, no se modifico la descripcion");
+      return;
+    }
+    this.descripcion = descripcion;
+  }
+
+
+  public String getCategoria() {
+    return categoria;
+  }
+
+  public void setCategoria(String categoria) {
+    this.categoria = categoria;
+  }
+
+  public boolean coincideId(int id) {
+    return this.id == id;
   }
 }

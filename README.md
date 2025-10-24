@@ -1,4 +1,4 @@
-# 🛒 Sistema de Gestión de ecomerce en Java
+# 🛒 Sistema de Gestión de ecommerce en Java
 
 > Aplicación de consola desarrollada en **Java** para la gestión de productos de decoración.  
 > Ahora con soporte para **precio** 💰 y **cantidad (stock)** 📦.
@@ -18,8 +18,11 @@ Modelo que representa un producto:
 ```java
 int id;
 String nombre;
-double precioP;
-int cantP;
+double precio;
+int cant;
+String descripcion;
+String categoria;
+
 
 Main.java
 
@@ -27,6 +30,7 @@ Controla la lógica del programa:
 
     Creación de productos
     Listado de productos en formato tabla
+    Busqueda por nombre
     Edicion de productos
     Eliminación de productos
 
