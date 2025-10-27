@@ -130,42 +130,126 @@ public class Main {
       return; // cuando hacemos el return en una funcion void, estamos cortando la ejecucion de la funcion
     }
 
-    String nombreOriginal = producto.getNombre();
-    double precioOriginal = producto.getPrecio();
-    String descripcionOriginal = producto.getDescripcion();
-    String categoriaOriginal = producto.getCategoria();
-    System.out.println("ingrese id del producto a editar");
+    Editar: while (true) {
+      System.out.println("""
+           Ingrese la opcion segun lo que desee modificar:
+          0 - Salir de edicion
+          1 - Todos los items
+          2 - Editar nombre
+          3 - Editar precio
+          4 - Editar descripcion 
+          5 - Editar categoria
+          
+          """);
+      if (!entrada.hasNextInt()) {
+        System.out.println("Opción inválida. Intente de nuevo.");
+        entrada.nextLine(); // descartar entrada inválida
+        continue;
+      }
+      int opcionEditar = entrada.nextInt();
+      entrada.nextLine();
 
-    System.out.println(nombreOriginal);
-    // TODO: validar que el usuario quiere editar el producto que se encontro
-    System.out.print("Ingrese el nuevo nombre: ");
-    entrada.nextLine();
-    String nuevoNombre = entrada.nextLine();
-    producto.setNombre(nuevoNombre);
-    entrada.nextLine();
-    System.out.println(precioOriginal);
-    // TODO: validar que el usuario quiere editar el producto que se encontro
-    System.out.print("Ingrese el nuevo precio: ");
+      switch (opcionEditar) {
+        case 1 -> {
+          String nombreOriginal = producto.getNombre();
+          double precioOriginal = producto.getPrecio();
+          String descripcionOriginal = producto.getDescripcion();
+          String categoriaOriginal = producto.getCategoria();
 
-    double nuevoPrecio = entrada.nextDouble();
-    producto.setPrecio(nuevoPrecio);
+          System.out.println("nombre actual: " + nombreOriginal);
+          // TODO: validar que el usuario quiere editar el producto que se encontro
+          //nombre
+          System.out.print("Ingrese el nuevo nombre: ");
+          String nuevoNombre = entrada.nextLine();
+          producto.setNombre(nuevoNombre);
+          //precio
+          System.out.println("precio actual: " + precioOriginal);
+          // TODO: validar que el usuario quiere editar el producto que se encontro
+          System.out.print("Ingrese el nuevo precio: ");
+          double nuevoPrecio = entrada.nextDouble();
+          producto.setPrecio(nuevoPrecio);
+          //Descripcion
+          System.out.println("descripcion actual: " + descripcionOriginal);
+          entrada.nextLine();
+          System.out.print("Ingrese el nuevo Descripcion: ");
+          String nuevaDescripcion = entrada.nextLine();
+          producto.setDescripcion(nuevaDescripcion);
+          entrada.nextLine();
+          //Categoria
+          System.out.println("categoria actual: " + categoriaOriginal);
+          System.out.print("Ingrese el nuevo categoria: ");
+          String nuevaCategoria = entrada.nextLine();
+          producto.setCategoria(nuevaCategoria);
 
-    System.out.println(descripcionOriginal);
-    entrada.nextLine();
-    System.out.print("Ingrese el nuevo Descripcion: ");
-    String nuevaDescripcion = entrada.nextLine();
-    producto.setDescripcion(nuevaDescripcion);
-    entrada.nextLine();
-    System.out.println(categoriaOriginal);
-    System.out.print("Ingrese el nuevo categoria: ");
-    String nuevaCategoria = entrada.nextLine();
-    producto.setCategoria(nuevaCategoria);
+          System.out.printf(
+              "El producto cambió: nombre '%s' → '%s', precio %.2f → %.2f, descripción '%s' → '%s', categoría '%s' → '%s'%n",
+              nombreOriginal, nuevoNombre, precioOriginal, nuevoPrecio, descripcionOriginal, nuevaDescripcion, categoriaOriginal, nuevaCategoria
+          );
+          pausa();
+        }
+        case 2 -> {
+          String nombreOriginal = producto.getNombre();
+          System.out.println("nombre actual: " + nombreOriginal);
+          // TODO: validar que el usuario quiere editar el producto que se encontro
+          //nombre
+          System.out.print("Ingrese el nuevo nombre: ");
+          String nuevoNombre = entrada.nextLine();
+          producto.setNombre(nuevoNombre);
+          System.out.printf("El nombre del producto cambio  a %s", nombreOriginal);
+        }
+        case 3 -> {
+          String nombreOriginal = producto.getNombre();
+          double precioOriginal = producto.getPrecio();
+          System.out.println(nombreOriginal);
+          // TODO: validar que el usuario quiere editar el producto que se encontro
+          System.out.println("el precio actual es: " + precioOriginal);
+          // TODO: validar que el usuario quiere editar el producto que se encontro
+          System.out.print("Ingrese el nuevo precio: ");
 
-    producto.setNombre(nuevoNombre);
-    producto.setPrecio(nuevoPrecio);
-    producto.setDescripcion(nuevaDescripcion);
-    producto.setCategoria(nuevaCategoria);
-    System.out.printf("El nombre del producto cambio de %s a %s", nombreOriginal, nuevoNombre, nuevaDescripcion, nuevaCategoria);
+          double nuevoPrecio = entrada.nextDouble();
+          producto.setPrecio(nuevoPrecio);
+
+          System.out.printf("El precio del producto cambio de  a %s", nuevoPrecio);
+        }
+        case 4 -> {
+          String descripcionOriginal = producto.getDescripcion();
+          String nombreOriginal = producto.getNombre();
+
+          System.out.println(nombreOriginal);
+
+          // TODO: validar que el usuario quiere editar el producto que se encontro
+
+          System.out.println("la descripcion actual es: " + descripcionOriginal);
+          entrada.nextLine();
+          System.out.print("Ingrese el nuevo Descripcion: ");
+          String nuevaDescripcion = entrada.nextLine();
+          producto.setDescripcion(nuevaDescripcion);
+          System.out.printf("La descripcion  del producto cambio de  a %s", nuevaDescripcion);
+        }
+        case 5 -> {
+          String categoriaOriginal = producto.getCategoria();
+          String nombreOriginal = producto.getNombre();
+
+          System.out.println(nombreOriginal);
+
+          // TODO: validar que el usuario quiere editar el producto que se encontro
+
+          System.out.println("la Categoria actual es: " + categoriaOriginal);
+          System.out.print("Ingrese el nuevo categoria: ");
+          String nuevaCategoria = entrada.nextLine();
+          producto.setCategoria(nuevaCategoria);
+
+          System.out.printf("La catergoria  del producto cambio a %s", nuevaCategoria);
+        }
+        case 0 ->
+          {
+          System.out.println("a salido de la opcion editar!");
+          break Editar;
+          // corta el bucle donde se ejecuta
+        }
+        default -> System.out.println("Opción incorrecta, intente de nuevo");
+      }
+    }
   }
 
   public static void borrarProducto(List<Producto> productos) {
@@ -215,6 +299,7 @@ public class Main {
     for (Producto producto : productos) {
       if (producto.coincideId(idBusqueda)) {
         return producto;
+
       }
     }
     System.out.println("No pudimos encontrar el producto con el id: " + idBusqueda);
